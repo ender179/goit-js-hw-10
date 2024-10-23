@@ -3,57 +3,45 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Countdown timer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css" />
-
-    <link rel="stylesheet" href="./css/common.css" />
-    <link rel="stylesheet" href="./css/timer.css" />
+    <title>Page 2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+        integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script type="module" crossorigin src="/goit-js-hw-10/01-timer.js"></script>
   <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-B5Qt9EMX.js">
   <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/vendor-BbbuE1sJ.js">
   <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/vendor-CZjNVMTf.css">
+  <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/01-timer-CxFqo6fM.css">
 </head>
 
 <body>
-    <div class="btn-container">
-        <p>
-            <a class="btn" href="index.html">Go back</a>
-        </p>
-    </div>
+    <a href="./index.html">Go to home</a>
 
-    <div class="thumb-block">
-        <div class="position" id="animatedDiv">
-            <div class="calendar">
-                <input class="input-calendar" type="text" id="datetime-picker" />
-                <button class="btn-input" type="button" data-start disabled>
-                    Start
-                </button>
+    <section>
+        <input type="text" id="datetime-picker" />
+        <button type="button" data-start>Start</button>
+
+        <div class="timer">
+            <div class="field">
+                <span class="value" data-days>00</span>
+                <span class="label">Days</span>
             </div>
-            <div class="timer">
-                <div class="field">
-                    <span class="value" data-days>00</span>
-                    <span class="label">Days</span>
-                </div>
-                <div class="field">
-                    <span class="value" data-hours>00</span>
-                    <span class="label">Hours</span>
-                </div>
-                <div class="field">
-                    <span class="value" data-minutes>00</span>
-                    <span class="label">Minutes</span>
-                </div>
-                <div class="field">
-                    <span class="value" data-seconds>00</span>
-                    <span class="label">Seconds</span>
-                </div>
+            <div class="field">
+                <span class="value" data-hours>00</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="field">
+                <span class="value" data-minutes>00</span>
+                <span class="label">Minutes</span>
+            </div>
+            <div class="field">
+                <span class="value" data-seconds>00</span>
+                <span class="label">Seconds</span>
             </div>
         </div>
-    </div>
+    </section>
 
 </body>
 
