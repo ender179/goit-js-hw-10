@@ -1,44 +1,43 @@
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
-const form = document.querySelector('.form');
+const formEl = document.querySelector('.form');
+const refs = {
+  delay: formEl.elements.delay,
+  state: formEl.elements.state,
+};
 
-function delayPromise(delay, radioChecked) {
-    const data = { delay, radioChecked };
-
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            if (radioChecked === 'fulfilled') {
-                res(data);
-            } else {
-                rej(data);
-            }
-        }, delay);
+formEl.addEventListener('submit', event => {
+  event.preventDefault();
+  function makePromise(delay, state) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (state === 'fulfilled') {
+          resolve(delay);
+        } else {
+          reject(delay);
+        }
+      }, delay);
     });
-}
+  }
 
-form.addEventListener('submit', onSubmitBtnClick);
+  const promise = makePromise(refs.delay.value, refs.state.value);
 
-function onSubmitBtnClick(event) {
-    event.preventDefault();
+  promise
+    .then(delay => {
+      iziToast.success({
+        color: 'green',
+        position: 'topRight',
+        message: `✅ Fulfilled promise in ${delay}ms`,
+      });
+    })
+    .catch(delay => {
+      iziToast.error({
+        color: 'red',
+        position: 'topRight',
+        message: `❌ Rejected promise in ${delay}ms`,
+      });
+    });
 
-    const form = event.target;
-    const delay = Number(form.elements.delay.value);
-    const radioChecked = form.elements.state.value;
-
-    delayPromise(delay, radioChecked)
-        .then(({ delay }) => {
-            iziToast.success({
-                title: 'OK',
-                message: `✅ Fulfilled promise in ${delay} ms`,
-            });
-        })
-        .catch(({ delay }) => {
-            iziToast.error({
-                title: 'Error',
-                message: `❌ Rejected promise in ${delay} ms`,
-            });
-        });
-
-    form.reset();
-}
+  formEl.reset();
+});
